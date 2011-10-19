@@ -42,9 +42,10 @@ APP_VERSION = '0.1'
 
 class IndicatorChars:
     CHARS_PATH = os.getenv('HOME') + '/.indicator-chars'
+    SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 
     def __init__(self):
-        self.ind = appindicator.Indicator("Chars", "gnome-character-map", appindicator.CATEGORY_APPLICATION_STATUS)
+        self.ind = appindicator.Indicator("Chars", self.SCRIPT_DIR + '/light16x16.png', appindicator.CATEGORY_APPLICATION_STATUS)
         self.ind.set_status(appindicator.STATUS_ACTIVE)        
 
         self.update_menu()
