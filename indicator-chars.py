@@ -31,6 +31,7 @@
 # DAMAGE.
 
 import os
+import re
 import gtk
 import gio
 import signal
@@ -38,14 +39,19 @@ import subprocess
 import appindicator
 
 APP_NAME = 'indicator-chars'
-APP_VERSION = '0.1'
+APP_VERSION = '0.2'
 
 class IndicatorChars:
-    CHARS_PATH = os.getenv('HOME') + '/.indicator-chars'
+    CHARS_PATH = os.path.join(os.getenv('HOME'), '.indicator-chars')
     SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 
+    submenu_title_pattern = re.compile(r'\[([^]]+)\] *')
+    description_pattern = re.compile(r' *(\([^)]+\)) *')
+
     def __init__(self):
-        self.ind = appindicator.Indicator("Chars", self.SCRIPT_DIR + '/light16x16.png', appindicator.CATEGORY_APPLICATION_STATUS)
+        self.ind = appindicator.Indicator(
+            "Chars", os.path.join(self.SCRIPT_DIR, 'light16x16.png'),
+            appindicator.CATEGORY_APPLICATION_STATUS)
         self.ind.set_status(appindicator.STATUS_ACTIVE)        
 
         self.update_menu()
@@ -73,14 +79,36 @@ class IndicatorChars:
         for charLine in charDef:
             charLine = unicode(charLine)
             charLine = charLine.strip()
-            parentItem = self.create_menu_item(charLine)
+            submenu_match = self.submenu_title_pattern.match(charLine)
+            if submenu_match:
+                submenu_title = submenu_match.group(1)
+                # remove title part from remainder:
+                charLine = charLine[submenu_match.end():]
+            else:
+                submenu_title = ''.join(
+                    self.description_pattern.split(charLine)[::2])
+            parentItem = self.create_menu_item(submenu_title)
             subMenu = gtk.Menu()
-            for char in charLine:
-                subItem = self.create_menu_item(char)
+            while charLine:
+                char = charLine[0]
+                charLine = charLine[1:]
+                description_match = self.description_pattern.match(charLine)
+                if description_match:
+                    item_title = char + ' ' + description_match.group(1)
+                    # remove description part from remainder:
+                    charLine = charLine[description_match.end():]
+                else:
+                    item_title = char
+                subItem = self.create_menu_item(item_title)
                 subItem.connect("activate", self.on_char_click, char)
                 subMenu.append(subItem)
             parentItem.set_submenu(subMenu)
             menu.append(parentItem)
+
+        menu.append(gtk.SeparatorMenuItem())
+        quit_item = self.create_menu_item('Quit')
+        quit_item.connect("activate", self.on_quit)
+        menu.append(quit_item)
 
         # Show the menu
         menu.show_all()
@@ -88,6 +116,10 @@ class IndicatorChars:
     def on_char_click(self, widget, char):
         cb = gtk.Clipboard(selection="PRIMARY")
         cb.set_text(char)
+
+    def on_quit(self, widget):
+        gtk.main_quit()
+
 
 if __name__ == "__main__":
     # Catch CTRL-C
