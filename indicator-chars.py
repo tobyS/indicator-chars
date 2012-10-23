@@ -50,7 +50,10 @@ class IndicatorChars:
 
     def __init__(self):
         self.ind = appindicator.Indicator(
-            "Chars", os.path.join(self.SCRIPT_DIR, 'light16x16.png'),
+            # Custom icon seems to doesn't work on my Ubuntu 12.04 LTS running Unity 2D
+            #"Chars", os.path.join(self.SCRIPT_DIR, 'light16x16.png'),
+            # So fallback to an referenced theme's icon name
+            "Chars", "accessories-character-map",
             appindicator.CATEGORY_APPLICATION_STATUS)
         self.ind.set_status(appindicator.STATUS_ACTIVE)        
 
