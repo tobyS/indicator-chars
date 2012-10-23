@@ -119,6 +119,8 @@ class IndicatorChars:
     def on_char_click(self, widget, char):
         cb = gtk.Clipboard(selection="PRIMARY")
         cb.set_text(char)
+        cb = gtk.Clipboard(selection="CLIPBOARD")
+        cb.set_text(char)
 
     def on_quit(self, widget):
         gtk.main_quit()
