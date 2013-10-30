@@ -74,7 +74,6 @@ class IndicatorChars:
 
         # Create menu
         menu = gtk.Menu()
-        self.ind.set_menu(menu)
         
         for charLine in charDef:
             charLine = unicode(charLine)
@@ -111,6 +110,7 @@ class IndicatorChars:
         menu.append(quit_item)
 
         # Show the menu
+        self.ind.set_menu(menu)
         menu.show_all()
 
     def on_char_click(self, widget, char):
