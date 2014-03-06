@@ -1,0 +1,18 @@
+#!/bin/bash
+# Get sudo password
+sudo_password="$( gksudo --print-pass --message 'Provide permission to make system changes: Type your password or press Cancel.' -- : 2>/dev/null )"
+# Check for null entry or cancellation.
+if [[ ${?} != 0 || -z ${sudo_password} ]]
+then
+    exit 4
+fi
+# Check that the password is valid.
+if ! sudo -kSp '' [ 1 ] <<<"${sudo_password}" 2>/dev/null
+then
+    exit 4
+fi
+# Execute sudo action
+sudo -Sp '' ln -sf /usr/local/indicator-chars/light-theme.png /usr/local/indicator-chars/indicator-chars.png <<<"${sudo_password}"
+killall indicator-chars.py
+indicator-chars.py
+
