@@ -50,7 +50,7 @@ class IndicatorChars:
 
     def __init__(self):
         self.ind = appindicator.Indicator(
-            "Chars", os.path.join(self.SCRIPT_DIR, 'light16x16.png'),
+            "Chars", os.path.join(self.SCRIPT_DIR, 'indicator-chars.png'),
             appindicator.CATEGORY_APPLICATION_STATUS)
         self.ind.set_status(appindicator.STATUS_ACTIVE)        
 
@@ -105,6 +105,12 @@ class IndicatorChars:
             menu.append(parentItem)
 
         menu.append(gtk.SeparatorMenuItem())
+        DarkTheme_item = self.create_menu_item('Use dark theme icons')
+        DarkTheme_item.connect("activate", self.DarkTheme)
+        menu.append(DarkTheme_item)
+        LightTheme_item = self.create_menu_item('Use light theme icons')
+        LightTheme_item.connect("activate", self.LightTheme)
+        menu.append(LightTheme_item)
         quit_item = self.create_menu_item('Quit')
         quit_item.connect("activate", self.on_quit)
         menu.append(quit_item)
@@ -116,6 +122,12 @@ class IndicatorChars:
     def on_char_click(self, widget, char):
         cb = gtk.Clipboard(selection="PRIMARY")
         cb.set_text(char)
+
+    def DarkTheme(self, dude):
+	os.system("/usr/local/indicator-chars/dark-theme-icons")
+
+    def LightTheme(self, dude):
+	os.system("/usr/local/indicator-chars/light-theme-icons")
 
     def on_quit(self, widget):
         gtk.main_quit()
