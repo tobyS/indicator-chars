@@ -105,10 +105,10 @@ class IndicatorChars:
             menu.append(parentItem)
 
         menu.append(gtk.SeparatorMenuItem())
-        DarkTheme_item = self.create_menu_item('Use dark theme icons')
+        DarkTheme_item = self.create_menu_item('Use dark theme icon')
         DarkTheme_item.connect("activate", self.DarkTheme)
         menu.append(DarkTheme_item)
-        LightTheme_item = self.create_menu_item('Use light theme icons')
+        LightTheme_item = self.create_menu_item('Use light theme icon')
         LightTheme_item.connect("activate", self.LightTheme)
         menu.append(LightTheme_item)
         quit_item = self.create_menu_item('Quit')
@@ -124,10 +124,10 @@ class IndicatorChars:
         cb.set_text(char)
 
     def DarkTheme(self, dude):
-	os.system("/usr/local/indicator-chars/dark-theme-icons")
+	os.system("/usr/local/indicator-chars/dark-theme-icon")
 
     def LightTheme(self, dude):
-	os.system("/usr/local/indicator-chars/light-theme-icons")
+	os.system("/usr/local/indicator-chars/light-theme-icon")
 
     def on_quit(self, widget):
         gtk.main_quit()
