@@ -35,8 +35,6 @@ Install
 Open issues
 -----------
 
-- If anyone could design a nice, unity style indicator icon?
-
 - Maybe there is a way to use multiple click buttons in menu items?
 
-  - No standard Gtk way does not work.
+- No standard Gtk way does not work.
