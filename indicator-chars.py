@@ -124,10 +124,10 @@ class IndicatorChars:
         cb.set_text(char)
 
     def DarkTheme(self, dude):
-	os.system("sudo /usr/local/indicator-chars/dark-theme-icon && restart")
+	os.system("sudo /usr/local/indicator-chars/dark-theme-icon && /usr/local/indicator-chars/restart")
 
     def LightTheme(self, dude):
-	os.system("sudo /usr/local/indicator-chars/light-theme-icon && restart")
+	os.system("sudo /usr/local/indicator-chars/light-theme-icon && /usr/local/indicator-chars/restart")
 
     def on_quit(self, widget):
         gtk.main_quit()
