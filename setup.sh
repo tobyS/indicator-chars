@@ -1,5 +1,7 @@
 #!/bin/bash
 
+killall indicator-chars.py
+
 sudo rm -Rf "/usr/local/indicator-chars"
 sudo rm -f "/usr/local/bin/indicator-chars.py"
 sudo mkdir -p "/usr/local/indicator-chars"
