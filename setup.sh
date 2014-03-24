@@ -17,6 +17,10 @@ sudo cp "./light-theme-icon" "/usr/local/indicator-chars/"
 sudo chown root:root "/usr/local/indicator-chars/light-theme-icon"
 sudo chmod a+x "/usr/local/indicator-chars/light-theme-icon"
 
+sudo cp "./setup" "/usr/local/indicator-chars/"
+sudo chown root:root "/usr/local/indicator-chars/setup"
+sudo chmod a+x "/usr/local/indicator-chars/setup"
+
 sudo cp "./dark-theme.png" "/usr/local/indicator-chars/"
 sudo cp "./light-theme.png" "/usr/local/indicator-chars/"
 sudo cp "./indicator-chars.png" "/usr/local/indicator-chars/"
