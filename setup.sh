@@ -2,8 +2,9 @@
 
 killall indicator-chars.py
 
-sudo rm -Rf "/usr/local/indicator-chars"
 sudo rm -f "/usr/local/bin/indicator-chars.py"
+sudo rm -Rf "/usr/local/indicator-chars"
+
 sudo mkdir -p "/usr/local/indicator-chars"
 
 sudo cp "./indicator-chars.py" "/usr/local/indicator-chars/"
@@ -19,9 +20,9 @@ sudo cp "./light-theme-icon" "/usr/local/indicator-chars/"
 sudo chown root:root "/usr/local/indicator-chars/light-theme-icon"
 sudo chmod a+x "/usr/local/indicator-chars/light-theme-icon"
 
-sudo cp "./setup" "/usr/local/indicator-chars/"
-sudo chown root:root "/usr/local/indicator-chars/setup"
-sudo chmod a+x "/usr/local/indicator-chars/setup"
+sudo cp "./edit-user-config" "/usr/local/indicator-chars/"
+sudo chown root:root "/usr/local/indicator-chars/edit-user-config"
+sudo chmod a+x "/usr/local/indicator-chars/edit-user-config"
 
 sudo cp "./dark-theme.png" "/usr/local/indicator-chars/"
 sudo cp "./light-theme.png" "/usr/local/indicator-chars/"

@@ -105,6 +105,10 @@ class IndicatorChars:
             menu.append(parentItem)
 
         menu.append(gtk.SeparatorMenuItem())
+        EditConfig_item = self.create_menu_item('Edit chars menu')
+        EditConfig_item.connect("activate", self.EditConfig)
+        menu.append(EditConfig_item)
+        menu.append(gtk.SeparatorMenuItem())
         DarkTheme_item = self.create_menu_item('Use dark theme icon')
         DarkTheme_item.connect("activate", self.DarkTheme)
         menu.append(DarkTheme_item)
@@ -122,6 +126,9 @@ class IndicatorChars:
     def on_char_click(self, widget, char):
         cb = gtk.Clipboard(selection="PRIMARY")
         cb.set_text(char)
+
+    def EditConfig(self, dude):
+	os.system("/usr/local/indicator-chars/edit-user-config")
 
     def DarkTheme(self, dude):
 	os.system("sudo /usr/local/indicator-chars/dark-theme-icon && /usr/local/indicator-chars/restart")

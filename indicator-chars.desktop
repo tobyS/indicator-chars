@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Indicator-Chars
+Name=Indicator Chars
 Comment=Paste special characters with Middle Click
 Exec=indicator-chars.py
-Icon=/usr/local/indicator-chars/light-theme.png
+Icon=preferences-desktop-keyboard-shortcuts
 Hidden=false
 NoDisplay=false
 Type=Application
