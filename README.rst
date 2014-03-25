@@ -2,9 +2,9 @@
 indicator-chars
 ===============
 
-Forked from: https://github.com/tobyS/indicator-chars
-
 : Original Author: Tobias Schlitt <toby@php.net>
+
+Forked from: https://github.com/tobyS/indicator-chars
 
 App indicator to provide a menu with special characters for
 simple copying them to clipboard (similar to original characters applet).
