@@ -2,7 +2,7 @@
 indicator-chars
 ===============
 
-: Original Author: Tobias Schlitt <toby@php.net>
+:Original Author: Tobias Schlitt <toby@php.net>
 
 Forked from: https://github.com/tobyS/indicator-chars
 
