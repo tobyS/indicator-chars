@@ -42,8 +42,10 @@ Open issues
 Changelog
 -----------
 
-1.2 Another menu item added to edit user config file with zenity, etc.
+1.X: Changed icons, added "copy to clipboard on click" feature from: https://github.com/Cyrille37/indicator-chars
 
-1.1 Issue of root password requirement to change icon resolved, etc.
+1.2: Another menu item added to edit user config file with zenity, etc.
 
-1.0 Original code forked: sample user config file added, icon made available also for dark themes, menu item added to change icon, DEB file added, etc.
+1.1: Issue of root password requirement to change icon resolved, etc.
+
+1.0: Original code forked: sample user config file added, icon made available also for dark themes, menu item added to change icon, DEB file added, etc.
