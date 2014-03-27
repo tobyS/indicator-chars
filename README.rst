@@ -27,6 +27,8 @@ Install
   - Spaces (apart from above) also count as chars
 
   - Make sure to use UTF-8 encoding
+  
+CAUTION: In case of non-DEB installation, be aware that copying a file to system directory "/etc/sudoers.d" might make it impossible to use the sudo command if there's something wrong with that file. Therefore, it might be a good idea to keep this folder open in a Root Nautilus or Terminal window so that you can remove such a file in case of a problem. It might also be a good idea to extract and copy at least that file from the DEB package.
 
 -----------
 Open issues
@@ -42,7 +44,7 @@ Open issues
 Changelog
 -----------
 
-1.X: Changed icons, added "copy to clipboard on click" feature from: https://github.com/Cyrille37/indicator-chars
+1.3: Changed icons, added "copy to clipboard on click" feature from: https://github.com/Cyrille37/indicator-chars
 
 1.2: Another menu item added to edit user config file with zenity, etc.
 
