@@ -39,7 +39,7 @@ import subprocess
 import appindicator
 
 APP_NAME = 'indicator-chars'
-APP_VERSION = '0.2'
+APP_VERSION = '1.3'
 
 class IndicatorChars:
     CHARS_PATH = os.path.join(os.getenv('HOME'), '.indicator-chars')
@@ -50,7 +50,7 @@ class IndicatorChars:
 
     def __init__(self):
         self.ind = appindicator.Indicator(
-            "Chars", os.path.join(self.SCRIPT_DIR, 'indicator-chars.png'),
+            "Chars", os.path.join(self.SCRIPT_DIR, 'indicator-chars-icon.png'),
             appindicator.CATEGORY_APPLICATION_STATUS)
         self.ind.set_status(appindicator.STATUS_ACTIVE)        
 

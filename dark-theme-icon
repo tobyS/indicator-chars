@@ -1,2 +1,2 @@
 #!/bin/bash
-cp -f /usr/local/indicator-chars/dark-theme-icon.svg /usr/local/indicator-chars/indicator-chars-icon.svg
+cp -f /usr/local/indicator-chars/dark-theme-icon.png /usr/local/indicator-chars/indicator-chars-icon.png
