@@ -31,16 +31,6 @@ Install
 CAUTION: In case of non-DEB installation, be aware that copying a file to system directory "/etc/sudoers.d" might make it impossible to use the sudo command if there's something wrong with that file. Therefore, it might be a good idea to keep this folder open in a Root Nautilus or Terminal window so that you can remove such a file in case of a problem. It might also be a good idea to extract and copy at least that file from the DEB package.
 
 -----------
-Open issues
------------
-
-- Clicking an item copies it to clipboard?
-
-- Maybe there is a way to use multiple click buttons in menu items?
-
-- No standard Gtk way does not work.
-
------------
 Changelog
 -----------
 
