@@ -9,26 +9,34 @@ Forked from: https://github.com/tobyS/indicator-chars
 App indicator to provide a menu with special characters for
 simple copying them to clipboard (similar to original characters applet).
 
+![screenshot](indicator-chars-1.4.png)
+
 -------
 Install
 -------
 
 - Checkout source files ( especially the DEB package ;-)
 
-- Create/Edit ~/.indicator-chars if the one here isn't good enough for you
+- Create/Edit `~/.indicator-chars` if the one here isn't good enough for you
 
   - Each row corresponds to a set of chars
 
-  - Optional submenu title prefix: "[title]" (trailing spaces stripped)
+  - Optional submenu title prefix: `[title]` (trailing spaces stripped)
 
-  - Optional descriptions after chars: "(description)" (leading &
+  - Optional descriptions after chars: `(description)` (leading &
     trailing spaces stripped)
 
   - Spaces (apart from above) also count as chars
 
-  - Make sure to use UTF-8 encoding
+  - Make sure to use **UTF-8** encoding
   
-CAUTION: In case of non-DEB installation, be aware that copying a file to system directory "/etc/sudoers.d" might make it impossible to use the sudo command if there's something wrong with that file. Therefore, it might be a good idea to keep this folder open in a Root Nautilus or Terminal window so that you can remove such a file in case of a problem. It might also be a good idea to extract and copy at least that file from the DEB package.
+| CAUTION: |
+|--------|
+|In case of non-DEB installation, be aware that copying a file to system directory `/etc/sudoers.d` might make it impossible to use the `sudo` command if there's something wrong with that file.
+ 
+Therefore, it might be a good idea to **keep this folder open in a Root Nautilus or Terminal window so that you can remove such a file in case of a problem**.
+ 
+It might also be a good idea to extract and copy at least that file from the DEB package.
 
 -----------
 Changelog
