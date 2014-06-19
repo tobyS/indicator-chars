@@ -9,7 +9,7 @@ Forked from: https://github.com/tobyS/indicator-chars
 App indicator to provide a menu with special characters for
 simple copying them to clipboard (similar to original characters applet).
 
-![screenshot](indicator-chars-1.4.png)
+![screenshot](indicator-chars-screenshot.png)
 
 -------
 Install
@@ -36,7 +36,7 @@ Install
  
 Therefore, it might be a good idea to **keep this folder open in a Root Nautilus or Terminal window so that you can remove such a file in case of a problem**.
  
-It might also be a good idea to extract and copy at least that file from the DEB package.
+It might also be a good idea to extract and copy at least that file from the DEB package.|
 
 -----------
 Changelog
