@@ -9,7 +9,9 @@ Forked from: https://github.com/tobyS/indicator-chars
 App indicator to provide a menu with special characters for
 simple copying them to clipboard (similar to original characters applet).
 
+
 ![screenshot](indicator-chars-screenshot.png)
+
 
 -------
 Install
@@ -30,13 +32,7 @@ Install
 
   - Make sure to use **UTF-8** encoding
   
-| CAUTION: |
-|--------|
-|In case of non-DEB installation, be aware that copying a file to system directory `/etc/sudoers.d` might make it impossible to use the `sudo` command if there's something wrong with that file.
- 
-Therefore, it might be a good idea to **keep this folder open in a Root Nautilus or Terminal window so that you can remove such a file in case of a problem**.
- 
-It might also be a good idea to extract and copy at least that file from the DEB package.|
+:**CAUTION**: In case of non-DEB installation, be aware that copying a file to system directory `/etc/sudoers.d` might make it impossible to use the `sudo` command if there's something wrong with that file. Therefore, it might be a good idea to **keep this folder open in a Root Nautilus or Terminal window so that you can remove such a file in case of a problem**. It might also be a good idea to extract and copy at least that file from the DEB package.
 
 -----------
 Changelog
