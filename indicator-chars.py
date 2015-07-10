@@ -40,7 +40,7 @@ import appindicator
 import sys
 
 APP_NAME = 'indicator-chars'
-APP_VERSION = '0.2'
+APP_VERSION = '1.3'
 
 class IndicatorChars:
     CHARS_PATH = os.path.join(os.getenv('HOME'), '.indicator-chars')
@@ -48,10 +48,7 @@ class IndicatorChars:
 
     def __init__(self):
         self.ind = appindicator.Indicator(
-            # Custom icon seems to doesn't work on my Ubuntu 12.04 LTS running Unity 2D
-            #'Chars', os.path.join(self.SCRIPT_DIR, 'light16x16.png'),
-            # So fallback to an referenced theme's icon name
-            'Chars', 'accessories-character-map',
+            'Chars', os.path.join(self.SCRIPT_DIR, 'indicator-chars-icon.png'),
             appindicator.CATEGORY_APPLICATION_STATUS)
         self.ind.set_status(appindicator.STATUS_ACTIVE)
 
@@ -144,7 +141,6 @@ class IndicatorChars:
     def update_menu(self, widget=None, data=None):
         # Create menu
         menu = gtk.Menu()
-        self.ind.set_menu(menu)
 
         for title, items in self.parse_config_file():
             parentItem = self.create_menu_item(title)
@@ -159,11 +155,22 @@ class IndicatorChars:
             menu.append(parentItem)
 
         menu.append(gtk.SeparatorMenuItem())
+        EditConfig_item = self.create_menu_item('Edit chars menu')
+        EditConfig_item.connect("activate", self.EditConfig)
+        menu.append(EditConfig_item)
+        menu.append(gtk.SeparatorMenuItem())
+        DarkTheme_item = self.create_menu_item('Use dark theme icon')
+        DarkTheme_item.connect("activate", self.DarkTheme)
+        menu.append(DarkTheme_item)
+        LightTheme_item = self.create_menu_item('Use light theme icon')
+        LightTheme_item.connect("activate", self.LightTheme)
+        menu.append(LightTheme_item)
         quit_item = self.create_menu_item('Quit')
         quit_item.connect('activate', self.on_quit)
         menu.append(quit_item)
 
         # Show the menu
+        self.ind.set_menu(menu)
         menu.show_all()
 
     def on_char_click(self, widget, char):
@@ -171,6 +178,17 @@ class IndicatorChars:
         cb.set_text(char)
         cb = gtk.Clipboard(selection='CLIPBOARD')
         cb.set_text(char)
+        cb = gtk.Clipboard(selection="CLIPBOARD")
+        cb.set_text(char)
+
+    def EditConfig(self, dude):
+	os.system("/usr/local/indicator-chars/edit-user-config")
+
+    def DarkTheme(self, dude):
+	os.system("sudo /usr/local/indicator-chars/dark-theme-icon && /usr/local/indicator-chars/restart")
+
+    def LightTheme(self, dude):
+	os.system("sudo /usr/local/indicator-chars/light-theme-icon && /usr/local/indicator-chars/restart")
 
     def on_quit(self, widget):
         gtk.main_quit()

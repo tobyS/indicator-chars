@@ -1,0 +1,3 @@
+#!/bin/bash
+killall indicator-chars.py
+indicator-chars.py

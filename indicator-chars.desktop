@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Indicator Chars
+Comment=Paste special characters with Middle Click
+Exec=indicator-chars.py
+Icon=preferences-desktop-keyboard-shortcuts
+Hidden=false
+NoDisplay=false
+Type=Application
+X-GNOME-Autostart-enabled=true
+
