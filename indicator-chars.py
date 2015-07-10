@@ -40,19 +40,37 @@ import appindicator
 import sys
 
 APP_NAME = 'indicator-chars'
-APP_VERSION = '1.3'
+APP_VERSION = '1.4'
 
-class IndicatorChars:
-    CHARS_PATH = os.path.join(os.getenv('HOME'), '.indicator-chars')
-    SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 
+class IndicatorChars(object):
     def __init__(self):
+        self.CHARS_PATH = os.path.expanduser('~/.indicator-chars')
+        self.SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
+        self.INSTALL_PATH = '/usr/local/indicator-chars/'
+        self.EDIT_PATH = self.find_edit_user_config()
+        self.CAN_CHANGE_THEME = self.can_change_theme()
+
         self.ind = appindicator.Indicator(
             'Chars', os.path.join(self.SCRIPT_DIR, 'indicator-chars-icon.png'),
             appindicator.CATEGORY_APPLICATION_STATUS)
         self.ind.set_status(appindicator.STATUS_ACTIVE)
 
         self.update_menu()
+
+    def find_edit_user_config(self):
+        for dir in [self.SCRIPT_DIR, self.INSTALL_PATH]:
+            f = os.path.join(dir, 'edit-user-config')
+            if os.path.isfile(f) and os.access(f, os.X_OK):
+                return f
+        return None
+
+    def can_change_theme(self):
+        for script in ['dark-theme-icon', 'light-theme-icon', 'restart']:
+            f = os.path.join(self.INSTALL_PATH, script)
+            if not (os.path.isfile(f) and os.access(f, os.X_OK)):
+                return False
+        return True
 
     def create_menu_item(self, label):
         item = gtk.MenuItem()
@@ -61,7 +79,7 @@ class IndicatorChars:
 
     def on_chars_changed(self, filemonitor, file, other_file, event_type):
         if event_type == gio.FILE_MONITOR_EVENT_CHANGES_DONE_HINT:
-            #print 'Characters changed, updating menu...'
+            # print 'Characters changed, updating menu...'
             self.update_menu()
 
     @staticmethod
@@ -129,9 +147,9 @@ class IndicatorChars:
         try:
             with open(self.CHARS_PATH) as f:
                 # Reading and ignoring whitespace.
-                charDef = [ line.strip() for line in f.readlines() ]
+                charDef = [line.strip() for line in f.readlines()]
                 # Ignoring blank lines and comments.
-                charDef = [ line for line in charDef if line and line[0] != '#' ]
+                charDef = [line for line in charDef if line and line[0] != '#']
         except IOError:
             charDef = []
 
@@ -139,7 +157,6 @@ class IndicatorChars:
             yield self.parse_line(charLine)
 
     def update_menu(self, widget=None, data=None):
-        # Create menu
         menu = gtk.Menu()
 
         for title, items in self.parse_config_file():
@@ -155,16 +172,21 @@ class IndicatorChars:
             menu.append(parentItem)
 
         menu.append(gtk.SeparatorMenuItem())
-        EditConfig_item = self.create_menu_item('Edit chars menu')
-        EditConfig_item.connect("activate", self.EditConfig)
-        menu.append(EditConfig_item)
-        menu.append(gtk.SeparatorMenuItem())
-        DarkTheme_item = self.create_menu_item('Use dark theme icon')
-        DarkTheme_item.connect("activate", self.DarkTheme)
-        menu.append(DarkTheme_item)
-        LightTheme_item = self.create_menu_item('Use light theme icon')
-        LightTheme_item.connect("activate", self.LightTheme)
-        menu.append(LightTheme_item)
+
+        if self.EDIT_PATH:
+            EditConfig_item = self.create_menu_item('Edit chars menu')
+            EditConfig_item.connect('activate', self.EditConfig)
+            menu.append(EditConfig_item)
+            menu.append(gtk.SeparatorMenuItem())
+
+        if self.CAN_CHANGE_THEME:
+            DarkTheme_item = self.create_menu_item('Use dark theme icon')
+            DarkTheme_item.connect('activate', self.DarkTheme)
+            menu.append(DarkTheme_item)
+            LightTheme_item = self.create_menu_item('Use light theme icon')
+            LightTheme_item.connect('activate', self.LightTheme)
+            menu.append(LightTheme_item)
+
         quit_item = self.create_menu_item('Quit')
         quit_item.connect('activate', self.on_quit)
         menu.append(quit_item)
@@ -180,13 +202,16 @@ class IndicatorChars:
         cb.set_text(char)
 
     def EditConfig(self, dude):
-	os.system("/usr/local/indicator-chars/edit-user-config")
+        try:
+            subprocess.call(self.EDIT_PATH)
+        except OSError:
+            pass
 
     def DarkTheme(self, dude):
-	os.system("sudo /usr/local/indicator-chars/dark-theme-icon && /usr/local/indicator-chars/restart")
+        os.system('sudo {p}/dark-theme-icon && {p}/restart'.format(p=self.INSTALL_PATH))
 
     def LightTheme(self, dude):
-	os.system("sudo /usr/local/indicator-chars/light-theme-icon && /usr/local/indicator-chars/restart")
+        os.system('sudo {p}/light-theme-icon && {p}/restart'.format(p=self.INSTALL_PATH))
 
     def on_quit(self, widget):
         gtk.main_quit()
