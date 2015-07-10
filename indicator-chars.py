@@ -178,8 +178,6 @@ class IndicatorChars:
         cb.set_text(char)
         cb = gtk.Clipboard(selection='CLIPBOARD')
         cb.set_text(char)
-        cb = gtk.Clipboard(selection="CLIPBOARD")
-        cb.set_text(char)
 
     def EditConfig(self, dude):
 	os.system("/usr/local/indicator-chars/edit-user-config")
