@@ -40,7 +40,7 @@ import appindicator
 import sys
 
 APP_NAME = 'indicator-chars'
-APP_VERSION = '1.4'
+APP_VERSION = '1.5'
 
 
 class IndicatorChars(object):
