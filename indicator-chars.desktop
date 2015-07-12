@@ -6,5 +6,6 @@ Icon=preferences-desktop-keyboard-shortcuts
 Hidden=false
 NoDisplay=false
 Type=Application
+Categories=GNOME;GTK;Utility;
 X-GNOME-Autostart-enabled=true
 
