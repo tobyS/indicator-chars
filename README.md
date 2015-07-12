@@ -35,8 +35,7 @@ Install
 Changelog
 -----------
 
-1.5: Merged pull request regarding "Code cleanup and some new features" by https://github.com/denilsonsa
-https://github.com/Sadi58/indicator-chars/pull/1
+1.5: Merged pull request regarding "Code cleanup and some new features" by https://github.com/denilsonsa at https://github.com/Sadi58/indicator-chars/pull/1 (DEB file to be updated later - sorry)
 
 1.4: Changed icons
 
