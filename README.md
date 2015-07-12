@@ -35,6 +35,9 @@ Install
 Changelog
 -----------
 
+1.5: Merged pull request regarding "Code cleanup and some new features" by https://github.com/denilsonsa
+https://github.com/Sadi58/indicator-chars/pull/1
+
 1.4: Changed icons
 
 1.3: Changed icons, added "copy to clipboard on click" feature from: https://github.com/Cyrille37/indicator-chars
