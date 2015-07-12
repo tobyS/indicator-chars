@@ -39,7 +39,7 @@ import subprocess
 import appindicator
 
 APP_NAME = 'indicator-chars'
-APP_VERSION = '1.3'
+APP_VERSION = '1.4'
 
 class IndicatorChars:
     CHARS_PATH = os.path.join(os.getenv('HOME'), '.indicator-chars')
