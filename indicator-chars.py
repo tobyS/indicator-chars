@@ -4,6 +4,8 @@
 # Very simple chars indicator.
 # Author: Tobias Schlitt <toby@php.net>
 #
+# Hacked by Cyrille37 on 2016-02-03
+#
 # Copyright (c) 2011, Tobias Schlitt
 # All rights reserved.
 # 
