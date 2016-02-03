@@ -36,6 +36,7 @@ import gtk
 import gio
 import signal
 import subprocess
+# sudo apt-get install python-appindicator
 import appindicator
 
 APP_NAME = 'indicator-chars'
