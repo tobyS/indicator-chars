@@ -11,6 +11,24 @@ Create a file .indicator-chars in your home directory with lines of
 characters to be selectable.
 
 -------
+Fork Cyrille37
+-------
+
+:Author: Cyrille37 <cyrille37@gmail.com>
+
+- Some changes to make indicator-chars works on Ubuntu 12.04LTS with Unity 2D
+
+  - replace the custom icon with a theme icon name
+
+  - add a char copy into Clipboard(selection="CLIPBOARD")
+
+- Other minors changes
+
+  - use env to find the Python engine
+
+  - add a configuration file example: "conf-example.indicator-chars"
+
+-------
 Install
 -------
 
