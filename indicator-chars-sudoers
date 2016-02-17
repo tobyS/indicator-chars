@@ -1,1 +1,1 @@
-%sudo ALL=NOPASSWD:/usr/local/indicator-chars/indicator-chars.sh
+%sudo ALL=NOPASSWD: /usr/local/indicator-chars/indicator-chars.sh
