@@ -1,2 +1,0 @@
-#!/bin/bash
-cp -f /usr/local/indicator-chars/light-theme-icon.png /usr/local/indicator-chars/indicator-chars-icon.png

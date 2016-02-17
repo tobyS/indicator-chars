@@ -14,7 +14,7 @@ Install
 
 - Checkout source files ( especially the DEB package ;-)
 
-- Create/Edit `~/.indicator-chars` if the one here isn't good enough for you
+- Create/Edit `~/.indicator-chars` file if the one here isn't good enough for you
 
   - Each row corresponds to a set of chars
 
@@ -34,6 +34,8 @@ Install
 
 Changelog
 -----------
+
+1.5: Merged all scripts as functions in one shell script, minor fixes and enhancements
 
 1.4: Changed icons
 

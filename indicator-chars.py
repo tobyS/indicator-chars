@@ -39,7 +39,7 @@ import subprocess
 import appindicator
 
 APP_NAME = 'indicator-chars'
-APP_VERSION = '1.4'
+APP_VERSION = '1.5'
 
 class IndicatorChars:
     CHARS_PATH = os.path.join(os.getenv('HOME'), '.indicator-chars')
@@ -105,16 +105,13 @@ class IndicatorChars:
             menu.append(parentItem)
 
         menu.append(gtk.SeparatorMenuItem())
-        EditConfig_item = self.create_menu_item('Edit chars menu')
-        EditConfig_item.connect("activate", self.EditConfig)
-        menu.append(EditConfig_item)
+        EditMenu_item = self.create_menu_item('Edit menu...')
+        EditMenu_item.connect("activate", self.EditMenu)
+        menu.append(EditMenu_item)
+        ChangeIcon_item = self.create_menu_item('Change icon...')
+        ChangeIcon_item.connect("activate", self.ChangeIcon)
+        menu.append(ChangeIcon_item)
         menu.append(gtk.SeparatorMenuItem())
-        DarkTheme_item = self.create_menu_item('Use dark theme icon')
-        DarkTheme_item.connect("activate", self.DarkTheme)
-        menu.append(DarkTheme_item)
-        LightTheme_item = self.create_menu_item('Use light theme icon')
-        LightTheme_item.connect("activate", self.LightTheme)
-        menu.append(LightTheme_item)
         quit_item = self.create_menu_item('Quit')
         quit_item.connect("activate", self.on_quit)
         menu.append(quit_item)
@@ -129,14 +126,11 @@ class IndicatorChars:
         cb = gtk.Clipboard(selection="CLIPBOARD")
         cb.set_text(char)
 
-    def EditConfig(self, dude):
-	os.system("/usr/local/indicator-chars/edit-user-config")
+    def EditMenu(self, dude):
+	os.system("/usr/local/indicator-chars/indicator-chars.sh edit_menu")
 
-    def DarkTheme(self, dude):
-	os.system("sudo /usr/local/indicator-chars/dark-theme-icon && /usr/local/indicator-chars/restart")
-
-    def LightTheme(self, dude):
-	os.system("sudo /usr/local/indicator-chars/light-theme-icon && /usr/local/indicator-chars/restart")
+    def ChangeIcon(self, dude):
+	os.system("sudo /usr/local/indicator-chars/indicator-chars.sh change_icon && /usr/local/indicator-chars/indicator-chars.sh restart")
 
     def on_quit(self, widget):
         gtk.main_quit()
