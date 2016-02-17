@@ -35,7 +35,7 @@ Install
 Changelog
 -----------
 
-1.5: Merged all scripts as functions in one shell script, minor fixes and enhancements
+1.5: Merged all scripts as functions in one shell script, minor fixes & enhancements
 
 1.4: Changed icons
 

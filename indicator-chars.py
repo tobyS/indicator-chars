@@ -135,7 +135,6 @@ class IndicatorChars:
     def on_quit(self, widget):
         gtk.main_quit()
 
-
 if __name__ == "__main__":
     # Catch CTRL-C
     signal.signal(signal.SIGINT, lambda signal, frame: gtk.main_quit())

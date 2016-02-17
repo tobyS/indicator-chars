@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#
 killall indicator-chars.py
 
 sudo rm -f "/usr/local/bin/indicator-chars.py"
