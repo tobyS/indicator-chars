@@ -130,7 +130,7 @@ class IndicatorChars:
 	os.system("/usr/local/indicator-chars/indicator-chars.sh edit_menu")
 
     def ChangeIcon(self, dude):
-	os.system("sudo /usr/local/indicator-chars/indicator-chars.sh change_icon && /usr/local/indicator-chars/indicator-chars.sh restart")
+	os.system("/usr/local/indicator-chars/indicator-chars.sh change_icon && /usr/local/indicator-chars/indicator-chars.sh restart")
 
     def on_quit(self, widget):
         gtk.main_quit()
