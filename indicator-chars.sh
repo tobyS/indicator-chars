@@ -33,15 +33,15 @@ option_icon()
 choice=`echo $im | sh -`
 if echo $choice | grep "Light" > /dev/null
 then
-	cp -f "/usr/local/indicator-chars/dark-theme-icon.png" "/usr/local/indicator-chars/indicator-chars-icon.png"
+	cp -f "/usr/share/indicator-chars/dark-theme-icon.png" "/usr/share/indicator-chars/indicator-chars-icon.png"
 fi
 if echo $choice | grep "Dark" > /dev/null
 then
-	cp -f "/usr/local/indicator-chars/light-theme-icon.png" "/usr/local/indicator-chars/indicator-chars-icon.png"
+	cp -f "/usr/share/indicator-chars/light-theme-icon.png" "/usr/share/indicator-chars/indicator-chars-icon.png"
 fi
 if echo $choice | grep "Color" > /dev/null
 then
-	cp -f "/usr/local/indicator-chars/color-theme-icon.png" "/usr/local/indicator-chars/indicator-chars-icon.png"
+	cp -f "/usr/share/indicator-chars/color-theme-icon.png" "/usr/share/indicator-chars/indicator-chars-icon.png"
 fi
 }
 menu_icon
@@ -50,7 +50,7 @@ option_icon
 
 restart()
 {
-killall indicator-chars.py
+pkill -f "/usr/bin/python /usr/local/bin/indicator-chars.py"
 indicator-chars.py
 }
 
