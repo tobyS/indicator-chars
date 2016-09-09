@@ -14,6 +14,8 @@ Install
 
 - Checkout source files ( especially the DEB package ;-)
 
+  - If not using the DEB package, make sure you have already installed dependencies: `bash` (>= 2.0), `coreutils` (>= 7.0), `diffutils` (>= 3.0), `libc6` (>= 2.0), `python` (>=2.7), `python-appindicator`, `python-gtk2`, `zenity`
+
 - Create/Edit `~/.indicator-chars` file if the one here isn't good enough for you
 
   - Each row corresponds to a set of chars
