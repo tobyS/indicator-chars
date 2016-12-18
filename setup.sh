@@ -14,6 +14,8 @@ sudo cp "./indicator-chars.sh" "/usr/share/indicator-chars/"
 sudo chown root:root "/usr/share/indicator-chars/indicator-chars.sh"
 sudo chmod a+x "/usr/share/indicator-chars/indicator-chars.sh"
 
+sudo cp "./breeze-dark-theme-icon.svg" "/usr/share/indicator-chars/"
+sudo cp "./breeze-light-theme-icon.svg" "/usr/share/indicator-chars/"
 sudo cp "./color-theme-icon.png" "/usr/share/indicator-chars/"
 sudo cp "./dark-theme-icon.png" "/usr/share/indicator-chars/"
 sudo cp "./light-theme-icon.png" "/usr/share/indicator-chars/"
