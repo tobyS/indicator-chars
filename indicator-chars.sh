@@ -22,26 +22,36 @@ change_icon()
 {
 menu_icon()
 {
-im="zenity --list --radiolist --title=\"Change Icon\" --text=\"<b>Select icon to use:</b>\" --width 270 --height 170"
+im="zenity --list --radiolist --title=\"Change Icon\" --text=\"<b>Select icon to use:</b>\" --width 270 --height 230"
 im=$im" --column=\"☑\" --column \"Options\" --column \"Description\" "
-im=$im"FALSE \"Light\" \"Icon for dark panels\" "
-im=$im"FALSE \"Dark\" \"Icon for light panels\" "
+im=$im"FALSE \"Breeze-dark\" \"Icon for light panels\" "
+im=$im"FALSE \"Breeze-light\" \"Icon for dark panels\" "
 im=$im"FALSE \"Color\" \"Icon for all panels\" "
+im=$im"FALSE \"Dark\" \"Icon for light panels\" "
+im=$im"FALSE \"Light\" \"Icon for dark panels\" "
 }
 option_icon()
 {
 choice=`echo $im | sh -`
-if echo $choice | grep "Light" > /dev/null
+if echo $choice | grep "Breeze-dark" > /dev/null
 then
-	cp -f "/usr/share/indicator-chars/dark-theme-icon.png" "/usr/share/indicator-chars/indicator-chars-icon.png"
+	cp -f "/usr/share/indicator-chars/breeze-light-theme-icon.png" "/usr/share/indicator-chars/indicator-chars-icon.png"
+fi
+if echo $choice | grep "Breeze-light" > /dev/null
+then
+	cp -f "/usr/share/indicator-chars/breeze-dark-theme-icon.png" "/usr/share/indicator-chars/indicator-chars-icon.png"
+fi
+if echo $choice | grep "Color" > /dev/null
+then
+	cp -f "/usr/share/indicator-chars/color-theme-icon.png" "/usr/share/indicator-chars/indicator-chars-icon.png"
 fi
 if echo $choice | grep "Dark" > /dev/null
 then
 	cp -f "/usr/share/indicator-chars/light-theme-icon.png" "/usr/share/indicator-chars/indicator-chars-icon.png"
 fi
-if echo $choice | grep "Color" > /dev/null
+if echo $choice | grep "Light" > /dev/null
 then
-	cp -f "/usr/share/indicator-chars/color-theme-icon.png" "/usr/share/indicator-chars/indicator-chars-icon.png"
+	cp -f "/usr/share/indicator-chars/dark-theme-icon.png" "/usr/share/indicator-chars/indicator-chars-icon.png"
 fi
 }
 menu_icon
