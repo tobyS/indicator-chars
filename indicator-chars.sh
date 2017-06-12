@@ -18,6 +18,12 @@ fi
 exit 0
 }
 
+restart_indicator()
+{
+pkill -f "/usr/bin/python /usr/local/bin/indicator-chars.py"
+indicator-chars.py
+}
+
 change_icon()
 {
 menu_icon()
@@ -36,32 +42,31 @@ choice=`echo $im | sh -`
 if echo $choice | grep "Breeze-dark" > /dev/null
 then
 	cp -f "/usr/share/indicator-chars/breeze-light-theme-icon.png" "/usr/share/indicator-chars/indicator-chars-icon.png"
+	restart_indicator
 fi
 if echo $choice | grep "Breeze-light" > /dev/null
 then
 	cp -f "/usr/share/indicator-chars/breeze-dark-theme-icon.png" "/usr/share/indicator-chars/indicator-chars-icon.png"
+	restart_indicator
 fi
 if echo $choice | grep "Color" > /dev/null
 then
 	cp -f "/usr/share/indicator-chars/color-theme-icon.png" "/usr/share/indicator-chars/indicator-chars-icon.png"
+	restart_indicator
 fi
 if echo $choice | grep "Dark" > /dev/null
 then
 	cp -f "/usr/share/indicator-chars/light-theme-icon.png" "/usr/share/indicator-chars/indicator-chars-icon.png"
+	restart_indicator
 fi
 if echo $choice | grep "Light" > /dev/null
 then
 	cp -f "/usr/share/indicator-chars/dark-theme-icon.png" "/usr/share/indicator-chars/indicator-chars-icon.png"
+	restart_indicator
 fi
 }
 menu_icon
 option_icon
-}
-
-restart()
-{
-pkill -f "/usr/bin/python /usr/local/bin/indicator-chars.py"
-indicator-chars.py
 }
 
 ########################################################################
