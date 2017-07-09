@@ -6,16 +6,16 @@
 #
 # Copyright (c) 2011, Tobias Schlitt
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 # Redistributions of source code must retain the above copyright notice,
 # this list of conditions and the following disclaimer.  Redistributions
 # in binary form must reproduce the above copyright notice, this list of
 # conditions and the following disclaimer in the documentation and/or
 # other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 # "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 # LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
@@ -50,9 +50,9 @@ class IndicatorChars:
 
     def __init__(self):
         self.ind = appindicator.Indicator(
-            "Chars", os.path.join(self.SCRIPT_DIR, 'indicator-chars-icon.png'),
+            "Chars", os.path.join(self.SCRIPT_DIR, 'indicator-chars-icon.svg'),
             appindicator.CATEGORY_APPLICATION_STATUS)
-        self.ind.set_status(appindicator.STATUS_ACTIVE)        
+        self.ind.set_status(appindicator.STATUS_ACTIVE)
 
         self.update_menu()
 
@@ -65,7 +65,7 @@ class IndicatorChars:
         if event_type == gio.FILE_MONITOR_EVENT_CHANGES_DONE_HINT:
             print 'Characters changed, updating menu...'
             self.update_menu()
-    
+
     def update_menu(self, widget = None, data = None):
         try:
             charDef = open(self.CHARS_PATH).readlines()
@@ -74,7 +74,7 @@ class IndicatorChars:
 
         # Create menu
         menu = gtk.Menu()
-        
+
         for charLine in charDef:
             charLine = unicode(charLine)
             charLine = charLine.strip()
@@ -141,11 +141,11 @@ if __name__ == "__main__":
 
     # Run the indicator
     i = IndicatorChars()
-    
-    # Monitor bookmarks changes 
+
+    # Monitor bookmarks changes
     file = gio.File(i.CHARS_PATH)
     monitor = file.monitor_file()
-    monitor.connect("changed", i.on_chars_changed)            
-    
+    monitor.connect("changed", i.on_chars_changed)
+
     # Main gtk loop
     gtk.main()

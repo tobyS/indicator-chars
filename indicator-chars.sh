@@ -41,27 +41,27 @@ option_icon()
 choice=`echo $im | sh -`
 if echo $choice | grep "Breeze-dark" > /dev/null
 then
-	cp -f "/usr/share/indicator-chars/breeze-light-theme-icon.png" "/usr/share/indicator-chars/indicator-chars-icon.png"
+	cp -f "/usr/share/indicator-chars/breeze-light-theme-icon.svg" "/usr/share/indicator-chars/indicator-chars-icon.svg"
 	restart_indicator
 fi
 if echo $choice | grep "Breeze-light" > /dev/null
 then
-	cp -f "/usr/share/indicator-chars/breeze-dark-theme-icon.png" "/usr/share/indicator-chars/indicator-chars-icon.png"
+	cp -f "/usr/share/indicator-chars/breeze-dark-theme-icon.svg" "/usr/share/indicator-chars/indicator-chars-icon.svg"
 	restart_indicator
 fi
 if echo $choice | grep "Color" > /dev/null
 then
-	cp -f "/usr/share/indicator-chars/color-theme-icon.png" "/usr/share/indicator-chars/indicator-chars-icon.png"
+	cp -f "/usr/share/indicator-chars/color-theme-icon.svg" "/usr/share/indicator-chars/indicator-chars-icon.svg"
 	restart_indicator
 fi
 if echo $choice | grep "Dark" > /dev/null
 then
-	cp -f "/usr/share/indicator-chars/light-theme-icon.png" "/usr/share/indicator-chars/indicator-chars-icon.png"
+	cp -f "/usr/share/indicator-chars/light-theme-icon.svg" "/usr/share/indicator-chars/indicator-chars-icon.svg"
 	restart_indicator
 fi
 if echo $choice | grep "Light" > /dev/null
 then
-	cp -f "/usr/share/indicator-chars/dark-theme-icon.png" "/usr/share/indicator-chars/indicator-chars-icon.png"
+	cp -f "/usr/share/indicator-chars/dark-theme-icon.svg" "/usr/share/indicator-chars/indicator-chars-icon.svg"
 	restart_indicator
 fi
 }

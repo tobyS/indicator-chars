@@ -32,6 +32,7 @@ Install
 Changelog
 -----------
 
+1.8: Work-in-progress - changed icons to svg, ...
 1.7: Breeze-style icons added, menu made more compact, and restart command moved from Python to Shell script
 
 1.6: Indicator icon made writable by all to eliminate "sudoers"
