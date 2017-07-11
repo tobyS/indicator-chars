@@ -20,24 +20,24 @@
      id="defs4" />
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="#2f2f2f"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscape:pageopacity="0.0"
+     inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="11.275183"
-     inkscape:cx="-10.544569"
+     inkscape:cx="-20.806173"
      inkscape:cy="15.372791"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:showpageshadow="false"
      units="px"
-     inkscape:window-width="1324"
-     inkscape:window-height="715"
-     inkscape:window-x="42"
-     inkscape:window-y="24"
-     inkscape:window-maximized="1"
+     inkscape:window-width="1272"
+     inkscape:window-height="845"
+     inkscape:window-x="199"
+     inkscape:window-y="59"
+     inkscape:window-maximized="0"
      showguides="false">
     <inkscape:grid
        type="xygrid"
@@ -102,7 +102,7 @@
      transform="translate(0,-1030.3622)">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:26.07481956px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Bold';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:26.07481956px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Bold';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:0.60784316;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
        x="0.0084581692"
        y="1141.5481"
        id="text3215"
@@ -112,6 +112,6 @@
          id="tspan3217"
          x="0.0084581692"
          y="1141.5481"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:26.07481956px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Bold';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1">à</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:26.07481956px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Bold';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:0.60784316;">à</tspan></text>
   </g>
 </svg>
