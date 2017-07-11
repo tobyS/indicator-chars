@@ -6,16 +6,16 @@
 #
 # Copyright (c) 2011, Tobias Schlitt
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 # Redistributions of source code must retain the above copyright notice,
 # this list of conditions and the following disclaimer.  Redistributions
 # in binary form must reproduce the above copyright notice, this list of
 # conditions and the following disclaimer in the documentation and/or
 # other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 # "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 # LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
@@ -39,7 +39,7 @@ import subprocess
 import appindicator
 
 APP_NAME = 'indicator-chars'
-APP_VERSION = '0.2'
+APP_VERSION = '1.7'
 
 class IndicatorChars:
     CHARS_PATH = os.path.join(os.getenv('HOME'), '.indicator-chars')
@@ -50,9 +50,9 @@ class IndicatorChars:
 
     def __init__(self):
         self.ind = appindicator.Indicator(
-            "Chars", os.path.join(self.SCRIPT_DIR, 'light16x16.png'),
+            "Chars", os.path.join(self.SCRIPT_DIR, 'indicator-chars-icon.svg'),
             appindicator.CATEGORY_APPLICATION_STATUS)
-        self.ind.set_status(appindicator.STATUS_ACTIVE)        
+        self.ind.set_status(appindicator.STATUS_ACTIVE)
 
         self.update_menu()
 
@@ -65,7 +65,7 @@ class IndicatorChars:
         if event_type == gio.FILE_MONITOR_EVENT_CHANGES_DONE_HINT:
             print 'Characters changed, updating menu...'
             self.update_menu()
-    
+
     def update_menu(self, widget = None, data = None):
         try:
             charDef = open(self.CHARS_PATH).readlines()
@@ -74,7 +74,7 @@ class IndicatorChars:
 
         # Create menu
         menu = gtk.Menu()
-        
+
         for charLine in charDef:
             charLine = unicode(charLine)
             charLine = charLine.strip()
@@ -105,6 +105,13 @@ class IndicatorChars:
             menu.append(parentItem)
 
         menu.append(gtk.SeparatorMenuItem())
+        EditMenu_item = self.create_menu_item('Edit menu...')
+        EditMenu_item.connect("activate", self.EditMenu)
+        menu.append(EditMenu_item)
+        ChangeIcon_item = self.create_menu_item('Change icon...')
+        ChangeIcon_item.connect("activate", self.ChangeIcon)
+        menu.append(ChangeIcon_item)
+        menu.append(gtk.SeparatorMenuItem())
         quit_item = self.create_menu_item('Quit')
         quit_item.connect("activate", self.on_quit)
         menu.append(quit_item)
@@ -116,10 +123,17 @@ class IndicatorChars:
     def on_char_click(self, widget, char):
         cb = gtk.Clipboard(selection="PRIMARY")
         cb.set_text(char)
+        cb = gtk.Clipboard(selection="CLIPBOARD")
+        cb.set_text(char)
+
+    def EditMenu(self, dude):
+	os.system("/usr/share/indicator-chars/indicator-chars.sh edit_menu")
+
+    def ChangeIcon(self, dude):
+	os.system("/usr/share/indicator-chars/indicator-chars.sh change_icon")
 
     def on_quit(self, widget):
         gtk.main_quit()
-
 
 if __name__ == "__main__":
     # Catch CTRL-C
@@ -127,11 +141,11 @@ if __name__ == "__main__":
 
     # Run the indicator
     i = IndicatorChars()
-    
-    # Monitor bookmarks changes 
+
+    # Monitor bookmarks changes
     file = gio.File(i.CHARS_PATH)
     monitor = file.monitor_file()
-    monitor.connect("changed", i.on_chars_changed)            
-    
+    monitor.connect("changed", i.on_chars_changed)
+
     # Main gtk loop
     gtk.main()
