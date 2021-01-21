@@ -21,6 +21,7 @@ To run with Python 2 use branch https://github.com/Cyrille37/indicator-chars/tre
 Changes
 -------
 - Porting to Python 3
+- take chars examples from https://github.com/Sadi58/indicator-chars
 - Works with Ubuntu 20 (use Python2 branch for older Ubuntu)
 - add a char copy into Clipboard(selection="CLIPBOARD")
 - use env to find the Python engine
