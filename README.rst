@@ -20,7 +20,6 @@ Changes
 -------
 - Porting to Python 3
 - Works with Ubuntu 20 (use Python2 branch for older Ubuntu)
-- icon from a theme icon name
 - add a char copy into Clipboard(selection="CLIPBOARD")
 - use env to find the Python engine
 - add a configuration file example: "conf-example.indicator-chars"
@@ -39,3 +38,9 @@ Install
   - Spaces (apart from above) also count as chars
   - Make sure to use UTF-8 encoding
 - Put indicator-chars.py into auto start
+
+-------
+Issues
+-------
+
+- if icon file does not work, like with Ubuntu 12.04 running Unity 2D, you change the code to use icon from a theme icon name.
