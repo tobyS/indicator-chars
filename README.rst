@@ -8,6 +8,8 @@ indicator-chars
 App indicator to provide a menu with (potentially funny UTF-8) characters for
 simple copying them to clipboard (similar to original characters applet).
 
+Short video presentation: https://video.comptoir.net/videos/watch/8671fb9d-ce7d-48d8-a5a5-0ce6f1c1316b
+
 Create a file .indicator-chars in your home directory with lines of
 characters to be selectable.
 
