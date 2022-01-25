@@ -24,12 +24,12 @@ Fork Cyrille37
 2016-02-03
 
 - Some changes to make indicator-chars works on Ubuntu 12.04LTS with Unity 2D
-  - replace the custom icon with a theme icon name
-  - add a char copy into Clipboard(selection="CLIPBOARD")
+- replace the custom icon with a theme icon name
+- add a char copy into Clipboard(selection="CLIPBOARD")
 
 - Other minors changes
-  - use env to find the Python engine
-  - add a configuration file example: "conf-example.indicator-chars"
+- use env to find the Python engine
+- add a configuration file example: "conf-example.indicator-chars"
 
 -------
 Install
