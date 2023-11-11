@@ -1,8 +1,12 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+#
+# Hacked by Cyrille37 on 2016-02-03
+# Hacked by Cyrille37 on 2021-01-25 Python3 and Gtk3
 #
 # Very simple chars indicator.
 # Author: Tobias Schlitt <toby@php.net>
+#
 #
 # Copyright (c) 2011, Tobias Schlitt
 # All rights reserved.
@@ -32,14 +36,27 @@
 
 import os
 import re
-import gtk
-import gio
 import signal
 import subprocess
-import appindicator
+
+#import gtk
+#from gi.repository import Gtk, GObject
+# sudo apt-get install python-appindicator
+#import appindicator
+
+# sudo apt-get install gir1.2-appindicator3
+import gi
+gi.require_version('Gtk', '3.0')
+try:
+	gi.require_version('AppIndicator3', '0.1')
+	from gi.repository import AppIndicator3 as appindicator
+except ImportError:
+	from gi.repository import AppIndicator as appindicator
+
+from gi.repository import Gtk as gtk, Gdk, GLib, GObject, Gio as gio
 
 APP_NAME = 'indicator-chars'
-APP_VERSION = '0.2'
+APP_VERSION = '0.3'
 
 class IndicatorChars:
     CHARS_PATH = os.path.join(os.getenv('HOME'), '.indicator-chars')
@@ -49,10 +66,14 @@ class IndicatorChars:
     description_pattern = re.compile(r' *(\([^)]+\)) *')
 
     def __init__(self):
-        self.ind = appindicator.Indicator(
-            "Chars", os.path.join(self.SCRIPT_DIR, 'light16x16.png'),
-            appindicator.CATEGORY_APPLICATION_STATUS)
-        self.ind.set_status(appindicator.STATUS_ACTIVE)        
+        self.ind = appindicator.Indicator.new(
+            # Custom icon seems to doesn't work on my Ubuntu 12.04 LTS running Unity 2D
+            #"Chars", os.path.join(self.SCRIPT_DIR, 'light16x16.png'),
+            # So fallback to an referenced theme's icon name
+            "Chars", "accessories-character-map",
+            # https://gjs-docs.gnome.org/appindicator301~0.1_api/appindicator3.indicatorcategory
+            appindicator.IndicatorCategory. APPLICATION_STATUS)
+        self.ind.set_status(appindicator.IndicatorStatus.ACTIVE)        
 
         self.update_menu()
 
@@ -62,10 +83,10 @@ class IndicatorChars:
         return item
 
     def on_chars_changed(self, filemonitor, file, other_file, event_type):
-        if event_type == gio.FILE_MONITOR_EVENT_CHANGES_DONE_HINT:
-            print 'Characters changed, updating menu...'
+        if event_type == gio.FileMonitorEvent.CHANGES_DONE_HINT:
+            print( 'Characters changed, updating menu...' )
             self.update_menu()
-    
+
     def update_menu(self, widget = None, data = None):
         try:
             charDef = open(self.CHARS_PATH).readlines()
@@ -74,10 +95,11 @@ class IndicatorChars:
 
         # Create menu
         menu = gtk.Menu()
-        
+
         for charLine in charDef:
-            charLine = unicode(charLine)
-            charLine = charLine.strip()
+            charLine = str(charLine).strip()
+            if charLine == '' :
+            	continue
             submenu_match = self.submenu_title_pattern.match(charLine)
             if submenu_match:
                 submenu_title = submenu_match.group(1)
@@ -114,8 +136,12 @@ class IndicatorChars:
         menu.show_all()
 
     def on_char_click(self, widget, char):
-        cb = gtk.Clipboard(selection="PRIMARY")
-        cb.set_text(char)
+        #cb = gtk.Clipboard(selection="PRIMARY")
+        cb = gtk.Clipboard.get(Gdk.SELECTION_PRIMARY)
+        cb.set_text(char, -1)
+        #cb = gtk.Clipboard(selection="CLIPBOARD")
+        cb = gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
+        cb.set_text(char, -1)
 
     def on_quit(self, widget):
         gtk.main_quit()
@@ -128,9 +154,9 @@ if __name__ == "__main__":
     # Run the indicator
     i = IndicatorChars()
     
-    # Monitor bookmarks changes 
-    file = gio.File(i.CHARS_PATH)
-    monitor = file.monitor_file()
+    # Monitor config file changes 
+    file = gio.File.new_for_path(i.CHARS_PATH)
+    monitor = file.monitor_file( gio.FileMonitorFlags.NONE, None )
     monitor.connect("changed", i.on_chars_changed)            
     
     # Main gtk loop

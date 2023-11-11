@@ -11,6 +11,27 @@ Create a file .indicator-chars in your home directory with lines of
 characters to be selectable.
 
 -------
+Fork Cyrille37
+-------
+
+:Author: Cyrille37 <cyrille37@gmail.com>
+
+2021-01-25
+
+  - Python 3 and Gtk 3, tested on Ubuntu 21.10 with MATE desktop
+  - `sudo apt-get install gir1.2-appindicator3`
+
+2016-02-03
+
+- Some changes to make indicator-chars works on Ubuntu 12.04LTS with Unity 2D
+- replace the custom icon with a theme icon name
+- add a char copy into Clipboard(selection="CLIPBOARD")
+
+- Other minors changes
+- use env to find the Python engine
+- add a configuration file example: "conf-example.indicator-chars"
+
+-------
 Install
 -------
 
